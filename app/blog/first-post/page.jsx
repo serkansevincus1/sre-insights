@@ -1,7 +1,9 @@
+'use client';
 import dynamic from 'next/dynamic';
 
-// Dinamik olarak MDX içeriği yükle
-const Post = dynamic(() => import('../content/first-post.mdx'));
+const Post = dynamic(() => import('@/components/mdx/first-post.mdx'), {
+  ssr: false,
+});
 
 export default function BlogPostPage() {
   return (
