@@ -45,6 +45,19 @@ export default function AdminPage() {
     await savePosts(updatedPosts);
   };
 
+  const publishApprovedPosts = async () => {
+    console.log('🚀 Yayınlama işlemi başlatılıyor...');
+    try {
+      const res = await fetch('/api/publish-approved');
+      const result = await res.json();
+      console.log('📤 Yayınlama sonucu:', result);
+      alert('Yayınlama tamamlandı.');
+    } catch (err) {
+      console.error('🛑 Yayınlama sırasında hata:', err);
+      alert('Yayınlama sırasında bir hata oluştu.');
+    }
+  };
+
   const savePosts = async (updated) => {
     try {
       await fetch('/api/save-posts', {
@@ -84,6 +97,12 @@ export default function AdminPage() {
   return (
     <div className="p-4 text-black dark:text-white">
       <h1 className="text-2xl font-bold mb-4">Admin Paneli</h1>
+      <button
+        onClick={publishApprovedPosts}
+        className="bg-blue-500 text-white px-4 py-2 mb-4"
+      >
+        Onaylananları Yayınla
+      </button>
       <ul className="space-y-2">
         {posts.length === 0 && <p>Gösterilecek içerik bulunamadı.</p>}
         {posts.map(post => (
