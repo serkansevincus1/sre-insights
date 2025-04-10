@@ -44,8 +44,8 @@ export default function AdminPage() {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-2 text-black dark:text-white">
         <h1 className="text-xl font-bold">Admin Girişi</h1>
-        <input type="text" placeholder="Kullanıcı adı" className="border px-2 py-1 bg-white text-black dark:bg-gray-800 dark:text-white" value={username} onChange={e => setUsername(e.target.value)} />
-        <input type="password" placeholder="Şifre" className="border px-2 py-1 bg-white text-black dark:bg-gray-800 dark:text-white" value={password} onChange={e => setPassword(e.target.value)} />
+        <input type="text" placeholder="Kullanıcı adı" className="border px-2 py-1 bg-white text-black dark:bg-gray-800 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400" value={username} onChange={e => setUsername(e.target.value)} />
+        <input type="password" placeholder="Şifre" className="border px-2 py-1 bg-white text-black dark:bg-gray-800 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400" value={password} onChange={e => setPassword(e.target.value)} />
         <button onClick={handleLogin} className="bg-blue-600 text-white px-4 py-1">Giriş Yap</button>
       </div>
     );
