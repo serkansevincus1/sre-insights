@@ -1,5 +1,3 @@
-// app/api/save-posts/route.js
-
 import { writeFileSync } from 'fs';
 import path from 'path';
 
@@ -33,5 +31,5 @@ export async function POST(request) {
 
 // GET metodu tanımlı değilse, 405 döndürülür
 export function GET() {
-  return new Response('Method Not Allowed', { status: 405 });
+  return new Response('Method Not AllowedSSSSSS', { status: 405 });
 }
