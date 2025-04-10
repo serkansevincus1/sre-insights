@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "content": "SRE ekipleri için alert threshold değerlerini optimize etmek, yanlış alarmları azaltmak kadar önemlidir. #SRE #DevOps #Monitoring",
+    "status": "pending",
+    "published": false
+  },
+  {
+    "id": 2,
+    "content": "Alert Fatigue ile baş etmek için tekrar eden alarmları pasifleştirin ve kritik seviyeleri yeniden tanımlayın.",
+    "status": "pending",
+    "published": false
+  }
+]
