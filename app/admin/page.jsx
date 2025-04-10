@@ -9,18 +9,18 @@ export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const fetchPosts = async () => {
+    console.log('📥 Postlar indiriliyor...');
     try {
-      console.log('📥 Postlar indiriliyor...');
       const res = await fetch('/data/posts.json');
       if (!res.ok) {
         console.error(`❌ HTTP Hatası: ${res.status}`);
         return;
       }
       const data = await res.json();
-      console.log('✅ Postlar başarıyla alındı:', data);
+      console.log('✅ Postlar başarıyla yüklendi:', data);
       setPosts(data);
     } catch (error) {
-      console.error('🚨 Postlar alınamadı:', error);
+      console.error('🚨 Postları alırken hata:', error);
     }
   };
 
@@ -31,10 +31,10 @@ export default function AdminPage() {
   const handleLogin = () => {
     console.log(`🔐 Giriş denemesi: ${username}`);
     if (username === 'admin' && password === 'sre123') {
-      console.log('✅ Giriş başarılı');
       setIsAuthenticated(true);
+      console.log('✅ Giriş başarılı');
     } else {
-      console.warn('❌ Geçersiz kullanıcı adı veya şifre');
+      console.warn('🚫 Geçersiz kullanıcı adı veya şifre');
       alert('Geçersiz kullanıcı adı veya şifre');
     }
   };
@@ -47,16 +47,14 @@ export default function AdminPage() {
 
   const savePosts = async (updated) => {
     try {
-      console.log('💾 Güncellenmiş postlar kaydediliyor:', updated);
-      const res = await fetch('/api/save-posts', {
+      await fetch('/api/save-posts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updated)
       });
-      const result = await res.json();
-      console.log('✅ Kayıt sonucu:', result);
-    } catch (error) {
-      console.error('🚨 Postlar kaydedilemedi:', error);
+      console.log('💾 Postlar başarıyla kaydedildi');
+    } catch (err) {
+      console.error('🛑 Postları kaydederken hata:', err);
     }
   };
 
