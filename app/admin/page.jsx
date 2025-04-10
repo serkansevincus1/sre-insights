@@ -60,12 +60,13 @@ export default function AdminPage() {
 
   const savePosts = async (updated) => {
     try {
-      await fetch('/api/save-posts', {
+      const res = await fetch('/api/save-posts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updated)
       });
-      console.log('💾 Postlar başarıyla kaydedildi');
+      const result = await res.json();
+      console.log('💾 Kaydetme sonucu:', result);
     } catch (err) {
       console.error('🛑 Postları kaydederken hata:', err);
     }
@@ -114,7 +115,7 @@ export default function AdminPage() {
                 onClick={() => approvePost(post.id)}
                 className="bg-green-500 text-white px-3 py-1 mt-2"
               >
-                Onayla
+                Onayla ve Yayınla
               </button>
             )}
           </li>
