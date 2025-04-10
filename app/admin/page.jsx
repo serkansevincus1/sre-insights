@@ -42,17 +42,17 @@ export default function AdminPage() {
 
   if (!isAuthenticated) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen gap-2">
+      <div className="flex flex-col items-center justify-center min-h-screen gap-2 text-black dark:text-white">
         <h1 className="text-xl font-bold">Admin Girişi</h1>
-        <input type="text" placeholder="Kullanıcı adı" className="border px-2 py-1" value={username} onChange={e => setUsername(e.target.value)} />
-        <input type="password" placeholder="Şifre" className="border px-2 py-1" value={password} onChange={e => setPassword(e.target.value)} />
+        <input type="text" placeholder="Kullanıcı adı" className="border px-2 py-1 bg-white text-black dark:bg-gray-800 dark:text-white" value={username} onChange={e => setUsername(e.target.value)} />
+        <input type="password" placeholder="Şifre" className="border px-2 py-1 bg-white text-black dark:bg-gray-800 dark:text-white" value={password} onChange={e => setPassword(e.target.value)} />
         <button onClick={handleLogin} className="bg-blue-600 text-white px-4 py-1">Giriş Yap</button>
       </div>
     );
   }
 
   return (
-    <div className="p-4">
+    <div className="p-4 text-black dark:text-white">
       <h1 className="text-2xl font-bold mb-4">Admin Paneli</h1>
       <ul className="space-y-2">
         {posts.map(post => (
