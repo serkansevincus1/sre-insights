@@ -9,9 +9,13 @@ export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const fetchPosts = async () => {
-    const res = await fetch('/data/posts.json');
-    const data = await res.json();
-    setPosts(data);
+    try {
+      const res = await fetch('/data/posts.json');
+      const data = await res.json();
+      setPosts(data);
+    } catch (error) {
+      console.error('Postlar alınamadı:', error);
+    }
   };
 
   useEffect(() => {
@@ -44,8 +48,20 @@ export default function AdminPage() {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-2 text-black dark:text-white">
         <h1 className="text-xl font-bold">Admin Girişi</h1>
-        <input type="text" placeholder="Kullanıcı adı" className="border px-2 py-1 bg-white text-black dark:bg-gray-800 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400" value={username} onChange={e => setUsername(e.target.value)} />
-        <input type="password" placeholder="Şifre" className="border px-2 py-1 bg-white text-black dark:bg-gray-800 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400" value={password} onChange={e => setPassword(e.target.value)} />
+        <input
+          type="text"
+          placeholder="Kullanıcı adı"
+          className="border px-2 py-1 bg-white text-black dark:bg-gray-800 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Şifre"
+          className="border px-2 py-1 bg-white text-black dark:bg-gray-800 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
         <button onClick={handleLogin} className="bg-blue-600 text-white px-4 py-1">Giriş Yap</button>
       </div>
     );
@@ -55,6 +71,7 @@ export default function AdminPage() {
     <div className="p-4 text-black dark:text-white">
       <h1 className="text-2xl font-bold mb-4">Admin Paneli</h1>
       <ul className="space-y-2">
+        {posts.length === 0 && <p>Gösterilecek içerik bulunamadı.</p>}
         {posts.map(post => (
           <li key={post.id} className="border p-2">
             <p>{post.content}</p>
