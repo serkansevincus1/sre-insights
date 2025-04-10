@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { publishToLinkedIn } from '@/utils/linkedin';
+import { publishToLinkedIn } from '../../shared';
 import fs from 'fs';
 
 export async function GET() {

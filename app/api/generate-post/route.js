@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { generatePost } from '@/utils/openai';
+import { generatePost } from '../../shared';
 import fs from 'fs';
 
 export async function GET() {
