@@ -12,6 +12,7 @@
     "react-dom": "^18.2.0",
     "@next/mdx": "^13.4.13",
     "next-mdx-remote": "^4.2.0"
+	"openai": "^4.24.1"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.1",
